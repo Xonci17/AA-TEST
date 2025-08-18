@@ -1,0 +1,655 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>A/B Test Results Report</title>
+        <style>
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                line-height: 1.6;
+                margin: 0;
+                padding: 20px;
+                background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+                min-height: 100vh;
+            }
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                background: white;
+                border-radius: 15px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                overflow: hidden;
+            }
+            .header {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                padding: 40px;
+                text-align: center;
+            }
+            .header h1 {
+                margin: 0 0 10px 0;
+                font-size: 2.5rem;
+                font-weight: 300;
+            }
+            .header p {
+                margin: 0;
+                font-size: 1.2rem;
+                opacity: 0.9;
+            }
+            .executive-summary {
+                padding: 30px 40px;
+                background: #f8f9fa;
+                border-bottom: 1px solid #dee2e6;
+            }
+            .summary-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+                margin-top: 20px;
+            }
+            .summary-card {
+                background: white;
+                padding: 25px;
+                border-radius: 10px;
+                text-align: center;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+                border-left: 4px solid #667eea;
+            }
+            .summary-card h3 {
+                margin: 0 0 15px 0;
+                color: #495057;
+                font-size: 1rem;
+            }
+            .summary-card .value {
+                font-size: 2rem;
+                font-weight: bold;
+                color: #667eea;
+                margin: 10px 0;
+            }
+            .summary-card .positive { color: #28a745; }
+            .summary-card .negative { color: #dc3545; }
+            .section {
+                padding: 40px;
+            }
+            .section h2 {
+                color: #495057;
+                border-bottom: 3px solid #667eea;
+                padding-bottom: 10px;
+                margin-bottom: 30px;
+            }
+            .segment-info {
+                background: #e9ecef;
+                padding: 20px;
+                border-radius: 8px;
+                margin-bottom: 20px;
+            }
+            .segment-info h3 {
+                margin: 0 0 10px 0;
+                color: #495057;
+            }
+            .recommendation {
+                margin: 30px 0;
+                padding: 20px;
+                border-radius: 10px;
+                font-weight: 500;
+            }
+            .recommendation.positive {
+                background: #d4edda;
+                color: #155724;
+                border: 1px solid #c3e6cb;
+            }
+            .recommendation.negative {
+                background: #f8d7da;
+                color: #721c24;
+                border: 1px solid #f5c6cb;
+            }
+            .recommendation.neutral {
+                background: #fff3cd;
+                color: #856404;
+                border: 1px solid #ffeaa7;
+            }
+            .methodology {
+                background: #f8f9fa;
+                padding: 30px 40px;
+                font-size: 0.9rem;
+                color: #6c757d;
+            }
+            @media print {
+                body { background: none; }
+                .container { box-shadow: none; }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1>A/B Test Results</h1>
+                <p>luvly_ref vs luvly_fl_ref • Conversion Funnel Analysis</p>
+                <p style="font-size: 1rem; margin-top: 15px;">Generated on August 18, 2025 at 14:11</p>
+            </div>
+    
+            <div class="executive-summary">
+                <h2 style="margin-top: 0;">Executive Summary</h2>
+                <div class="summary-grid">
+                    <div class="summary-card">
+                        <h3>Total Sample Size</h3>
+                        <div class="value">2,594</div>
+                        <p>Control: 1,292 | Test: 1,302</p>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Final Conversion Lift</h3>
+                        <div class="value positive">+296.9%</div>
+                        <p>0.39% → 1.54%</p>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Statistical Significance</h3>
+                        <div class="value positive">
+                            ✓ Significant
+                        </div>
+                        <p>p-value: 0.0027</p>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Recommendation</h3>
+                        <div class="value positive">
+                            ✅ Implement
+                        </div>
+                        <p>Strong positive effect</p>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="section">
+                <h2>Overall Analysis</h2>
+                <div class="segment-info">
+                    <h3>Segment Overview</h3>
+                    <p><strong>Sample Size:</strong> 2,594 users (Control: 1,292, Test: 1,302)</p>
+                </div>
+
+                <style type="text/css">
+#T_405ca thead th {
+  background-color: #343a40;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 12px;
+  border: 1px solid #dee2e6;
+}
+#T_405ca tbody td {
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #dee2e6;
+}
+#T_405ca tbody tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+#T_405ca tbody tr:hover {
+  background-color: #e9ecef;
+}
+#T_405ca table {
+  border-collapse: collapse;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+#T_405ca_row5_col5, #T_405ca_row5_col6, #T_405ca_row6_col5, #T_405ca_row6_col6 {
+  background-color: #d4edda;
+  font-weight: bold;
+  color: #155724;
+}
+#T_405ca_row5_col9, #T_405ca_row6_col9 {
+  background-color: #fff3cd;
+  font-weight: bold;
+  color: #856404;
+}
+</style>
+<table id="T_405ca">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_405ca_level0_col0" class="col_heading level0 col0" >Event</th>
+      <th id="T_405ca_level0_col1" class="col_heading level0 col1" >Control Users</th>
+      <th id="T_405ca_level0_col2" class="col_heading level0 col2" >Test Users</th>
+      <th id="T_405ca_level0_col3" class="col_heading level0 col3" >Control Rate</th>
+      <th id="T_405ca_level0_col4" class="col_heading level0 col4" >Test Rate</th>
+      <th id="T_405ca_level0_col5" class="col_heading level0 col5" >Effect</th>
+      <th id="T_405ca_level0_col6" class="col_heading level0 col6" >Lift %</th>
+      <th id="T_405ca_level0_col7" class="col_heading level0 col7" >p-value</th>
+      <th id="T_405ca_level0_col8" class="col_heading level0 col8" >CI 95%</th>
+      <th id="T_405ca_level0_col9" class="col_heading level0 col9" >Significance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_405ca_level0_row0" class="row_heading level0 row0" >0</th>
+      <td id="T_405ca_row0_col0" class="data row0 col0" >Session Start</td>
+      <td id="T_405ca_row0_col1" class="data row0 col1" >1,292</td>
+      <td id="T_405ca_row0_col2" class="data row0 col2" >1,302</td>
+      <td id="T_405ca_row0_col3" class="data row0 col3" >100.00%</td>
+      <td id="T_405ca_row0_col4" class="data row0 col4" >100.00%</td>
+      <td id="T_405ca_row0_col5" class="data row0 col5" >+0.00pp</td>
+      <td id="T_405ca_row0_col6" class="data row0 col6" >+0.0%</td>
+      <td id="T_405ca_row0_col7" class="data row0 col7" >N/A</td>
+      <td id="T_405ca_row0_col8" class="data row0 col8" >[+0.00, +0.00]</td>
+      <td id="T_405ca_row0_col9" class="data row0 col9" ></td>
+    </tr>
+    <tr>
+      <th id="T_405ca_level0_row1" class="row_heading level0 row1" >1</th>
+      <td id="T_405ca_row1_col0" class="data row1 col0" >First Page Completed</td>
+      <td id="T_405ca_row1_col1" class="data row1 col1" >446</td>
+      <td id="T_405ca_row1_col2" class="data row1 col2" >447</td>
+      <td id="T_405ca_row1_col3" class="data row1 col3" >34.52%</td>
+      <td id="T_405ca_row1_col4" class="data row1 col4" >34.33%</td>
+      <td id="T_405ca_row1_col5" class="data row1 col5" >-0.19pp</td>
+      <td id="T_405ca_row1_col6" class="data row1 col6" >-0.5%</td>
+      <td id="T_405ca_row1_col7" class="data row1 col7" >0.9196</td>
+      <td id="T_405ca_row1_col8" class="data row1 col8" >[-3.85, +3.47]</td>
+      <td id="T_405ca_row1_col9" class="data row1 col9" ></td>
+    </tr>
+    <tr>
+      <th id="T_405ca_level0_row2" class="row_heading level0 row2" >2</th>
+      <td id="T_405ca_row2_col0" class="data row2 col0" >Email Page Show</td>
+      <td id="T_405ca_row2_col1" class="data row2 col1" >159</td>
+      <td id="T_405ca_row2_col2" class="data row2 col2" >157</td>
+      <td id="T_405ca_row2_col3" class="data row2 col3" >12.31%</td>
+      <td id="T_405ca_row2_col4" class="data row2 col4" >12.06%</td>
+      <td id="T_405ca_row2_col5" class="data row2 col5" >-0.25pp</td>
+      <td id="T_405ca_row2_col6" class="data row2 col6" >-2.0%</td>
+      <td id="T_405ca_row2_col7" class="data row2 col7" >0.8468</td>
+      <td id="T_405ca_row2_col8" class="data row2 col8" >[-2.77, +2.27]</td>
+      <td id="T_405ca_row2_col9" class="data row2 col9" ></td>
+    </tr>
+    <tr>
+      <th id="T_405ca_level0_row3" class="row_heading level0 row3" >3</th>
+      <td id="T_405ca_row3_col0" class="data row3 col0" >Plans Page Show</td>
+      <td id="T_405ca_row3_col1" class="data row3 col1" >131</td>
+      <td id="T_405ca_row3_col2" class="data row3 col2" >131</td>
+      <td id="T_405ca_row3_col3" class="data row3 col3" >10.14%</td>
+      <td id="T_405ca_row3_col4" class="data row3 col4" >10.06%</td>
+      <td id="T_405ca_row3_col5" class="data row3 col5" >-0.08pp</td>
+      <td id="T_405ca_row3_col6" class="data row3 col6" >-0.8%</td>
+      <td id="T_405ca_row3_col7" class="data row3 col7" >0.9475</td>
+      <td id="T_405ca_row3_col8" class="data row3 col8" >[-2.40, +2.24]</td>
+      <td id="T_405ca_row3_col9" class="data row3 col9" ></td>
+    </tr>
+    <tr>
+      <th id="T_405ca_level0_row4" class="row_heading level0 row4" >4</th>
+      <td id="T_405ca_row4_col0" class="data row4 col0" >Subs Purchase Show</td>
+      <td id="T_405ca_row4_col1" class="data row4 col1" >30</td>
+      <td id="T_405ca_row4_col2" class="data row4 col2" >47</td>
+      <td id="T_405ca_row4_col3" class="data row4 col3" >2.32%</td>
+      <td id="T_405ca_row4_col4" class="data row4 col4" >3.61%</td>
+      <td id="T_405ca_row4_col5" class="data row4 col5" >+1.29pp</td>
+      <td id="T_405ca_row4_col6" class="data row4 col6" >+55.5%</td>
+      <td id="T_405ca_row4_col7" class="data row4 col7" >0.0533</td>
+      <td id="T_405ca_row4_col8" class="data row4 col8" >[-0.02, +2.59]</td>
+      <td id="T_405ca_row4_col9" class="data row4 col9" ></td>
+    </tr>
+    <tr>
+      <th id="T_405ca_level0_row5" class="row_heading level0 row5" >5</th>
+      <td id="T_405ca_row5_col0" class="data row5 col0" >Subs Purchase Started</td>
+      <td id="T_405ca_row5_col1" class="data row5 col1" >7</td>
+      <td id="T_405ca_row5_col2" class="data row5 col2" >20</td>
+      <td id="T_405ca_row5_col3" class="data row5 col3" >0.54%</td>
+      <td id="T_405ca_row5_col4" class="data row5 col4" >1.54%</td>
+      <td id="T_405ca_row5_col5" class="data row5 col5" >+0.99pp</td>
+      <td id="T_405ca_row5_col6" class="data row5 col6" >+183.5%</td>
+      <td id="T_405ca_row5_col7" class="data row5 col7" >0.0126</td>
+      <td id="T_405ca_row5_col8" class="data row5 col8" >[+0.22, +1.77]</td>
+      <td id="T_405ca_row5_col9" class="data row5 col9" >*</td>
+    </tr>
+    <tr>
+      <th id="T_405ca_level0_row6" class="row_heading level0 row6" >6</th>
+      <td id="T_405ca_row6_col0" class="data row6 col0" >Subs Purchase Completed</td>
+      <td id="T_405ca_row6_col1" class="data row6 col1" >5</td>
+      <td id="T_405ca_row6_col2" class="data row6 col2" >20</td>
+      <td id="T_405ca_row6_col3" class="data row6 col3" >0.39%</td>
+      <td id="T_405ca_row6_col4" class="data row6 col4" >1.54%</td>
+      <td id="T_405ca_row6_col5" class="data row6 col5" >+1.15pp</td>
+      <td id="T_405ca_row6_col6" class="data row6 col6" >+296.9%</td>
+      <td id="T_405ca_row6_col7" class="data row6 col7" >0.0027</td>
+      <td id="T_405ca_row6_col8" class="data row6 col8" >[+0.40, +1.90]</td>
+      <td id="T_405ca_row6_col9" class="data row6 col9" >**</td>
+    </tr>
+  </tbody>
+</table>
+
+
+                <div class="recommendation positive">
+                    <strong>Recommendation:</strong> Implement test variant for overall analysis. Shows statistically significant improvement with +296.9% relative increase.
+                </div>
+            </div>
+        
+            <div class="section">
+                <h2>Googleadwords_Int Traffic</h2>
+                <div class="segment-info">
+                    <h3>Segment Overview</h3>
+                    <p><strong>Sample Size:</strong> 2,110 users (Control: 1,057, Test: 1,053)</p>
+                </div>
+
+                <style type="text/css">
+#T_fc814 thead th {
+  background-color: #343a40;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 12px;
+  border: 1px solid #dee2e6;
+}
+#T_fc814 tbody td {
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #dee2e6;
+}
+#T_fc814 tbody tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+#T_fc814 tbody tr:hover {
+  background-color: #e9ecef;
+}
+#T_fc814 table {
+  border-collapse: collapse;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+#T_fc814_row5_col5, #T_fc814_row5_col6, #T_fc814_row6_col5, #T_fc814_row6_col6 {
+  background-color: #d4edda;
+  font-weight: bold;
+  color: #155724;
+}
+#T_fc814_row5_col9, #T_fc814_row6_col9 {
+  background-color: #fff3cd;
+  font-weight: bold;
+  color: #856404;
+}
+</style>
+<table id="T_fc814">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_fc814_level0_col0" class="col_heading level0 col0" >Event</th>
+      <th id="T_fc814_level0_col1" class="col_heading level0 col1" >Control Users</th>
+      <th id="T_fc814_level0_col2" class="col_heading level0 col2" >Test Users</th>
+      <th id="T_fc814_level0_col3" class="col_heading level0 col3" >Control Rate</th>
+      <th id="T_fc814_level0_col4" class="col_heading level0 col4" >Test Rate</th>
+      <th id="T_fc814_level0_col5" class="col_heading level0 col5" >Effect</th>
+      <th id="T_fc814_level0_col6" class="col_heading level0 col6" >Lift %</th>
+      <th id="T_fc814_level0_col7" class="col_heading level0 col7" >p-value</th>
+      <th id="T_fc814_level0_col8" class="col_heading level0 col8" >CI 95%</th>
+      <th id="T_fc814_level0_col9" class="col_heading level0 col9" >Significance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_fc814_level0_row0" class="row_heading level0 row0" >0</th>
+      <td id="T_fc814_row0_col0" class="data row0 col0" >Session Start</td>
+      <td id="T_fc814_row0_col1" class="data row0 col1" >1,057</td>
+      <td id="T_fc814_row0_col2" class="data row0 col2" >1,053</td>
+      <td id="T_fc814_row0_col3" class="data row0 col3" >100.00%</td>
+      <td id="T_fc814_row0_col4" class="data row0 col4" >100.00%</td>
+      <td id="T_fc814_row0_col5" class="data row0 col5" >+0.00pp</td>
+      <td id="T_fc814_row0_col6" class="data row0 col6" >+0.0%</td>
+      <td id="T_fc814_row0_col7" class="data row0 col7" >N/A</td>
+      <td id="T_fc814_row0_col8" class="data row0 col8" >[+0.00, +0.00]</td>
+      <td id="T_fc814_row0_col9" class="data row0 col9" ></td>
+    </tr>
+    <tr>
+      <th id="T_fc814_level0_row1" class="row_heading level0 row1" >1</th>
+      <td id="T_fc814_row1_col0" class="data row1 col0" >First Page Completed</td>
+      <td id="T_fc814_row1_col1" class="data row1 col1" >427</td>
+      <td id="T_fc814_row1_col2" class="data row1 col2" >428</td>
+      <td id="T_fc814_row1_col3" class="data row1 col3" >40.40%</td>
+      <td id="T_fc814_row1_col4" class="data row1 col4" >40.65%</td>
+      <td id="T_fc814_row1_col5" class="data row1 col5" >+0.25pp</td>
+      <td id="T_fc814_row1_col6" class="data row1 col6" >+0.6%</td>
+      <td id="T_fc814_row1_col7" class="data row1 col7" >0.9075</td>
+      <td id="T_fc814_row1_col8" class="data row1 col8" >[-3.94, +4.44]</td>
+      <td id="T_fc814_row1_col9" class="data row1 col9" ></td>
+    </tr>
+    <tr>
+      <th id="T_fc814_level0_row2" class="row_heading level0 row2" >2</th>
+      <td id="T_fc814_row2_col0" class="data row2 col0" >Email Page Show</td>
+      <td id="T_fc814_row2_col1" class="data row2 col1" >150</td>
+      <td id="T_fc814_row2_col2" class="data row2 col2" >150</td>
+      <td id="T_fc814_row2_col3" class="data row2 col3" >14.19%</td>
+      <td id="T_fc814_row2_col4" class="data row2 col4" >14.25%</td>
+      <td id="T_fc814_row2_col5" class="data row2 col5" >+0.05pp</td>
+      <td id="T_fc814_row2_col6" class="data row2 col6" >+0.4%</td>
+      <td id="T_fc814_row2_col7" class="data row2 col7" >0.9717</td>
+      <td id="T_fc814_row2_col8" class="data row2 col8" >[-2.93, +3.03]</td>
+      <td id="T_fc814_row2_col9" class="data row2 col9" ></td>
+    </tr>
+    <tr>
+      <th id="T_fc814_level0_row3" class="row_heading level0 row3" >3</th>
+      <td id="T_fc814_row3_col0" class="data row3 col0" >Plans Page Show</td>
+      <td id="T_fc814_row3_col1" class="data row3 col1" >124</td>
+      <td id="T_fc814_row3_col2" class="data row3 col2" >124</td>
+      <td id="T_fc814_row3_col3" class="data row3 col3" >11.73%</td>
+      <td id="T_fc814_row3_col4" class="data row3 col4" >11.78%</td>
+      <td id="T_fc814_row3_col5" class="data row3 col5" >+0.04pp</td>
+      <td id="T_fc814_row3_col6" class="data row3 col6" >+0.4%</td>
+      <td id="T_fc814_row3_col7" class="data row3 col7" >0.9746</td>
+      <td id="T_fc814_row3_col8" class="data row3 col8" >[-2.70, +2.79]</td>
+      <td id="T_fc814_row3_col9" class="data row3 col9" ></td>
+    </tr>
+    <tr>
+      <th id="T_fc814_level0_row4" class="row_heading level0 row4" >4</th>
+      <td id="T_fc814_row4_col0" class="data row4 col0" >Subs Purchase Show</td>
+      <td id="T_fc814_row4_col1" class="data row4 col1" >29</td>
+      <td id="T_fc814_row4_col2" class="data row4 col2" >43</td>
+      <td id="T_fc814_row4_col3" class="data row4 col3" >2.74%</td>
+      <td id="T_fc814_row4_col4" class="data row4 col4" >4.08%</td>
+      <td id="T_fc814_row4_col5" class="data row4 col5" >+1.34pp</td>
+      <td id="T_fc814_row4_col6" class="data row4 col6" >+48.8%</td>
+      <td id="T_fc814_row4_col7" class="data row4 col7" >0.0900</td>
+      <td id="T_fc814_row4_col8" class="data row4 col8" >[-0.21, +2.89]</td>
+      <td id="T_fc814_row4_col9" class="data row4 col9" ></td>
+    </tr>
+    <tr>
+      <th id="T_fc814_level0_row5" class="row_heading level0 row5" >5</th>
+      <td id="T_fc814_row5_col0" class="data row5 col0" >Subs Purchase Started</td>
+      <td id="T_fc814_row5_col1" class="data row5 col1" >6</td>
+      <td id="T_fc814_row5_col2" class="data row5 col2" >19</td>
+      <td id="T_fc814_row5_col3" class="data row5 col3" >0.57%</td>
+      <td id="T_fc814_row5_col4" class="data row5 col4" >1.80%</td>
+      <td id="T_fc814_row5_col5" class="data row5 col5" >+1.24pp</td>
+      <td id="T_fc814_row5_col6" class="data row5 col6" >+217.9%</td>
+      <td id="T_fc814_row5_col7" class="data row5 col7" >0.0087</td>
+      <td id="T_fc814_row5_col8" class="data row5 col8" >[+0.31, +2.16]</td>
+      <td id="T_fc814_row5_col9" class="data row5 col9" >**</td>
+    </tr>
+    <tr>
+      <th id="T_fc814_level0_row6" class="row_heading level0 row6" >6</th>
+      <td id="T_fc814_row6_col0" class="data row6 col0" >Subs Purchase Completed</td>
+      <td id="T_fc814_row6_col1" class="data row6 col1" >4</td>
+      <td id="T_fc814_row6_col2" class="data row6 col2" >19</td>
+      <td id="T_fc814_row6_col3" class="data row6 col3" >0.38%</td>
+      <td id="T_fc814_row6_col4" class="data row6 col4" >1.80%</td>
+      <td id="T_fc814_row6_col5" class="data row6 col5" >+1.43pp</td>
+      <td id="T_fc814_row6_col6" class="data row6 col6" >+376.8%</td>
+      <td id="T_fc814_row6_col7" class="data row6 col7" >0.0016</td>
+      <td id="T_fc814_row6_col8" class="data row6 col8" >[+0.54, +2.31]</td>
+      <td id="T_fc814_row6_col9" class="data row6 col9" >**</td>
+    </tr>
+  </tbody>
+</table>
+
+
+                <div class="recommendation positive">
+                    <strong>Recommendation:</strong> Implement test variant for googleadwords_int traffic. Shows statistically significant improvement with +376.8% relative increase.
+                </div>
+            </div>
+        
+            <div class="section">
+                <h2>Facebook Ads Traffic</h2>
+                <div class="segment-info">
+                    <h3>Segment Overview</h3>
+                    <p><strong>Sample Size:</strong> 473 users (Control: 232, Test: 241)</p>
+                </div>
+
+                <style type="text/css">
+#T_9e22d thead th {
+  background-color: #343a40;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 12px;
+  border: 1px solid #dee2e6;
+}
+#T_9e22d tbody td {
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #dee2e6;
+}
+#T_9e22d tbody tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+#T_9e22d tbody tr:hover {
+  background-color: #e9ecef;
+}
+#T_9e22d table {
+  border-collapse: collapse;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+</style>
+<table id="T_9e22d">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_9e22d_level0_col0" class="col_heading level0 col0" >Event</th>
+      <th id="T_9e22d_level0_col1" class="col_heading level0 col1" >Control Users</th>
+      <th id="T_9e22d_level0_col2" class="col_heading level0 col2" >Test Users</th>
+      <th id="T_9e22d_level0_col3" class="col_heading level0 col3" >Control Rate</th>
+      <th id="T_9e22d_level0_col4" class="col_heading level0 col4" >Test Rate</th>
+      <th id="T_9e22d_level0_col5" class="col_heading level0 col5" >Effect</th>
+      <th id="T_9e22d_level0_col6" class="col_heading level0 col6" >Lift %</th>
+      <th id="T_9e22d_level0_col7" class="col_heading level0 col7" >p-value</th>
+      <th id="T_9e22d_level0_col8" class="col_heading level0 col8" >CI 95%</th>
+      <th id="T_9e22d_level0_col9" class="col_heading level0 col9" >Significance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_9e22d_level0_row0" class="row_heading level0 row0" >0</th>
+      <td id="T_9e22d_row0_col0" class="data row0 col0" >Session Start</td>
+      <td id="T_9e22d_row0_col1" class="data row0 col1" >232</td>
+      <td id="T_9e22d_row0_col2" class="data row0 col2" >241</td>
+      <td id="T_9e22d_row0_col3" class="data row0 col3" >100.00%</td>
+      <td id="T_9e22d_row0_col4" class="data row0 col4" >100.00%</td>
+      <td id="T_9e22d_row0_col5" class="data row0 col5" >+0.00pp</td>
+      <td id="T_9e22d_row0_col6" class="data row0 col6" >+0.0%</td>
+      <td id="T_9e22d_row0_col7" class="data row0 col7" >N/A</td>
+      <td id="T_9e22d_row0_col8" class="data row0 col8" >[+0.00, +0.00]</td>
+      <td id="T_9e22d_row0_col9" class="data row0 col9" ></td>
+    </tr>
+    <tr>
+      <th id="T_9e22d_level0_row1" class="row_heading level0 row1" >1</th>
+      <td id="T_9e22d_row1_col0" class="data row1 col0" >First Page Completed</td>
+      <td id="T_9e22d_row1_col1" class="data row1 col1" >17</td>
+      <td id="T_9e22d_row1_col2" class="data row1 col2" >14</td>
+      <td id="T_9e22d_row1_col3" class="data row1 col3" >7.33%</td>
+      <td id="T_9e22d_row1_col4" class="data row1 col4" >5.81%</td>
+      <td id="T_9e22d_row1_col5" class="data row1 col5" >-1.52pp</td>
+      <td id="T_9e22d_row1_col6" class="data row1 col6" >-20.7%</td>
+      <td id="T_9e22d_row1_col7" class="data row1 col7" >0.5047</td>
+      <td id="T_9e22d_row1_col8" class="data row1 col8" >[-5.99, +2.95]</td>
+      <td id="T_9e22d_row1_col9" class="data row1 col9" ></td>
+    </tr>
+    <tr>
+      <th id="T_9e22d_level0_row2" class="row_heading level0 row2" >2</th>
+      <td id="T_9e22d_row2_col0" class="data row2 col0" >Email Page Show</td>
+      <td id="T_9e22d_row2_col1" class="data row2 col1" >8</td>
+      <td id="T_9e22d_row2_col2" class="data row2 col2" >5</td>
+      <td id="T_9e22d_row2_col3" class="data row2 col3" >3.45%</td>
+      <td id="T_9e22d_row2_col4" class="data row2 col4" >2.07%</td>
+      <td id="T_9e22d_row2_col5" class="data row2 col5" >-1.37pp</td>
+      <td id="T_9e22d_row2_col6" class="data row2 col6" >-39.8%</td>
+      <td id="T_9e22d_row2_col7" class="data row2 col7" >0.3610</td>
+      <td id="T_9e22d_row2_col8" class="data row2 col8" >[-4.33, +1.58]</td>
+      <td id="T_9e22d_row2_col9" class="data row2 col9" ></td>
+    </tr>
+    <tr>
+      <th id="T_9e22d_level0_row3" class="row_heading level0 row3" >3</th>
+      <td id="T_9e22d_row3_col0" class="data row3 col0" >Plans Page Show</td>
+      <td id="T_9e22d_row3_col1" class="data row3 col1" >6</td>
+      <td id="T_9e22d_row3_col2" class="data row3 col2" >5</td>
+      <td id="T_9e22d_row3_col3" class="data row3 col3" >2.59%</td>
+      <td id="T_9e22d_row3_col4" class="data row3 col4" >2.07%</td>
+      <td id="T_9e22d_row3_col5" class="data row3 col5" >-0.51pp</td>
+      <td id="T_9e22d_row3_col6" class="data row3 col6" >-19.8%</td>
+      <td id="T_9e22d_row3_col7" class="data row3 col7" >0.7121</td>
+      <td id="T_9e22d_row3_col8" class="data row3 col8" >[-3.23, +2.21]</td>
+      <td id="T_9e22d_row3_col9" class="data row3 col9" ></td>
+    </tr>
+    <tr>
+      <th id="T_9e22d_level0_row4" class="row_heading level0 row4" >4</th>
+      <td id="T_9e22d_row4_col0" class="data row4 col0" >Subs Purchase Show</td>
+      <td id="T_9e22d_row4_col1" class="data row4 col1" >1</td>
+      <td id="T_9e22d_row4_col2" class="data row4 col2" >2</td>
+      <td id="T_9e22d_row4_col3" class="data row4 col3" >0.43%</td>
+      <td id="T_9e22d_row4_col4" class="data row4 col4" >0.83%</td>
+      <td id="T_9e22d_row4_col5" class="data row4 col5" >+0.40pp</td>
+      <td id="T_9e22d_row4_col6" class="data row4 col6" >+92.5%</td>
+      <td id="T_9e22d_row4_col7" class="data row4 col7" >0.5849</td>
+      <td id="T_9e22d_row4_col8" class="data row4 col8" >[-1.02, +1.82]</td>
+      <td id="T_9e22d_row4_col9" class="data row4 col9" ></td>
+    </tr>
+    <tr>
+      <th id="T_9e22d_level0_row5" class="row_heading level0 row5" >5</th>
+      <td id="T_9e22d_row5_col0" class="data row5 col0" >Subs Purchase Started</td>
+      <td id="T_9e22d_row5_col1" class="data row5 col1" >1</td>
+      <td id="T_9e22d_row5_col2" class="data row5 col2" >0</td>
+      <td id="T_9e22d_row5_col3" class="data row5 col3" >0.43%</td>
+      <td id="T_9e22d_row5_col4" class="data row5 col4" >0.00%</td>
+      <td id="T_9e22d_row5_col5" class="data row5 col5" >-0.43pp</td>
+      <td id="T_9e22d_row5_col6" class="data row5 col6" >-100.0%</td>
+      <td id="T_9e22d_row5_col7" class="data row5 col7" >0.3076</td>
+      <td id="T_9e22d_row5_col8" class="data row5 col8" >[-1.27, +0.41]</td>
+      <td id="T_9e22d_row5_col9" class="data row5 col9" ></td>
+    </tr>
+    <tr>
+      <th id="T_9e22d_level0_row6" class="row_heading level0 row6" >6</th>
+      <td id="T_9e22d_row6_col0" class="data row6 col0" >Subs Purchase Completed</td>
+      <td id="T_9e22d_row6_col1" class="data row6 col1" >1</td>
+      <td id="T_9e22d_row6_col2" class="data row6 col2" >0</td>
+      <td id="T_9e22d_row6_col3" class="data row6 col3" >0.43%</td>
+      <td id="T_9e22d_row6_col4" class="data row6 col4" >0.00%</td>
+      <td id="T_9e22d_row6_col5" class="data row6 col5" >-0.43pp</td>
+      <td id="T_9e22d_row6_col6" class="data row6 col6" >-100.0%</td>
+      <td id="T_9e22d_row6_col7" class="data row6 col7" >0.3076</td>
+      <td id="T_9e22d_row6_col8" class="data row6 col8" >[-1.27, +0.41]</td>
+      <td id="T_9e22d_row6_col9" class="data row6 col9" ></td>
+    </tr>
+  </tbody>
+</table>
+
+
+                <div class="recommendation neutral">
+                    <strong>Recommendation:</strong> Continue testing for facebook ads traffic. Insufficient statistical evidence for decision.
+                </div>
+            </div>
+        
+            <div class="methodology">
+                <h3>Methodology</h3>
+                <p><strong>Statistical Test:</strong> Two-proportion z-test for comparing conversion rates between control and test groups.</p>
+                <p><strong>Significance Levels:</strong> * p&lt;0.05, ** p&lt;0.01, *** p&lt;0.001</p>
+                <p><strong>Confidence Intervals:</strong> 95% confidence intervals for the difference in conversion rates.</p>
+                <p><strong>Effect Size:</strong> Measured as difference in percentage points (pp) and relative lift percentage.</p>
+            </div>
+        </div>
+    </body>
+    </html>
+    
